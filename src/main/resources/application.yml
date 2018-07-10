@@ -1,6 +1,6 @@
 spring:
-  profiles:
-    active: dev
+#  profiles:
+#    active: dev
   application:
     name: microservice-provider-user
   datasource:
@@ -19,6 +19,30 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://nsk:abcd1234@localhost:8761/eureka/
+      defaultZone: http://nsk:abcd1234@localhost:8764/eureka/
   instance:
     prefer-ip-address: true
+    metadata-map:
+      my-metadata: My defined metedata
+
+---
+# profiles = peer2时配置信息
+spring:
+  profiles: peer1
+server:
+  port: 8082
+eureka:
+  client:
+    service-url:
+      defaultZone: http://nsk:abcd1234@localhost:8764/eureka/
+---
+# profiles = peer2时配置信息
+spring:
+  profiles: peer2
+server:
+  port: 8083
+eureka:
+  client:
+    service-url:
+      defaultZone: http://nsk:abcd1234@localhost:8764/eureka/
+
