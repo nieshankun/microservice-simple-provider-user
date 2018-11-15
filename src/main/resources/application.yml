@@ -4,26 +4,29 @@ spring:
   application:
     name: microservice-provider-user
   datasource:
-    url: jdbc:mysql://localhost:3306/cloud?useSSL=true
+    url: jdbc:mysql://192.168.186.246:3306/studentdb
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 123456
+    password: NSK924841191nsk-
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
 server:
-  port: 8080
+#  port: 8080
   servlet-path: /user-api/*
 eureka:
   client:
     service-url:
-      defaultZone: http://nsk:abcd1234@localhost:8764/eureka/
+      defaultZone: http://nsk:abcd1234@49.4.21.126:31741/eureka/
   instance:
     prefer-ip-address: true
     metadata-map:
       my-metadata: My defined metedata
+logging:
+  level:
+    com.nsk: DEBUG
 
 ---
 # profiles = peer2时配置信息
